@@ -14,7 +14,8 @@ class ImagenController extends Controller
      */
     public function index()
     {
-        //
+        $imagenes = Imagen::orderBy('created_at', 'DESC')->get();
+        return view('dashboard', compact('imagenes'));
     }
 
     /**

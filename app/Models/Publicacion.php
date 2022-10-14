@@ -9,6 +9,8 @@ class Publicacion extends Model
 {
     use HasFactory;
 
+    protected $table = "publicaciones";
+
     public function usuario() {
         return $this->belongsTo('App\Models\User', 'id_usuario', 'id');
      }
@@ -20,4 +22,8 @@ class Publicacion extends Model
      public function imagenes() {
          return $this->hasMany('App\Models\Imagen', 'id_publicacion', 'id');
      }
+
+     public function imagenP() {
+        return $this->hasOne('App\Models\Imagen')->latest();
+    }
 }

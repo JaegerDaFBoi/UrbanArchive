@@ -1,15 +1,14 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <x-jet-welcome />
-            </div>
-        </div>
+  @section('content')
+  <main>
+    <div class="grid-container">
+      @foreach ($imagenes as $key => $imagen)
+        <div class="grid-item {{ (rand(1,9) == 2) ? 'tall' : '' }} {{(rand(1,5) == 3) ? 'wide' : ''}}" style="background-image: url({{ asset('storage/'.$imagen->path) }})">
+          
+      </div>
+      
+      @endforeach
     </div>
+  </main>
+  @endsection
 </x-app-layout>

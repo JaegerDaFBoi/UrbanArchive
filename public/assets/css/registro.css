@@ -1,0 +1,43 @@
+.row{
+    background: rgb(0, 0, 0);
+    border-radius: 30px;
+    color: white;
+    width: 40%;
+    padding: 5%;
+    font-size:x-large;
+}
+.centrar{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 120px;
+}
+
+input{
+    border-radius: 30px;
+    width: 100%;
+    height: 40px;
+    color: black !important;
+}
+
+.btn-small {
+    border-radius: 20px;
+    background: linear-gradient(150deg, #fdbb2d, #b21f1f, #1a2a6c);
+    transition: left 1s;
+    color: white;
+}
+
+textarea{
+    width: 100%;
+    height: 100px;
+
+}
+
+select{
+    width: 100%;
+    height: 40px;
+    border-radius: 30px;
+}
+
+.input-field {
+    background-color: black;
+}

@@ -1,60 +1,81 @@
 <x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+    @section('content')
+    <div class="centrar">
+        <main class="row">
+            <x-jet-validation-errors class="mb-4" />
+            <form action="{{ route('register') }}" method="POST">
+                @csrf
+                <h2>REGISTRARSE</h2><br>
 
-        <x-jet-validation-errors class="mb-4" />
-
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
-
-            <div>
-                <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
-            </div>
-
-            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                <div class="mt-4">
-                    <x-jet-label for="terms">
-                        <div class="flex items-center">
-                            <x-jet-checkbox name="terms" id="terms"/>
-
-                            <div class="ml-2">
-                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
-                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
-                                ]) !!}
-                            </div>
-                        </div>
-                    </x-jet-label>
+                
+                <!--Nombre completo y Numero de Celular-->
+                <div class="input-field col s6">
+                    
+                    
+                    <label>Nombre Completo</label><input name="name" type="text">
                 </div>
-            @endif
+                <div class="input-field col s6">
+                    
+                    
+                    <label>Numero de Celular</label><input name="telefono" type="text">
+                </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
+                <!--Tipo de Documento y Numero de Documento-->
+                <div class="input-field col s6">
+                    
+                   
+                    <label>Tipo de Documento</label> <input name="tipodoc" type="text">
+                </div>
+                <div class="input-field col s6">
+                    
+                    
+                    <label>Numero de Documento</label><input name="documento" type="number">
+                </div>
 
-                <x-jet-button class="ml-4">
-                    {{ __('Register') }}
-                </x-jet-button>
-            </div>
-        </form>
-    </x-jet-authentication-card>
+                <!--Select usuarios Genero--> 
+                <div class="col s6">
+                    <label>Seleccionar usuario</label>
+                    <select class="browser-default" name="role">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="1"> Usuario</option>
+                        <option value="3">Artista</option>
+                    </select>
+                </div>
+                <div class="col s6">
+                    <label>Seleccionar Genero</label>
+                    <select class="browser-default" name="genero">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="F"> Femenino</option>
+                        <option value="M">Masculino</option>
+                        <option value="o">Otros</option>
+                    </select>
+                </div>
+
+                <!--Correo Electronico y contraseña-->
+                <div class="input-field col s6">
+                    
+                    
+                    <label>Correo Electronico</label><input name="email" type="email">
+                </div>
+                <div class="input-field col s6">
+                    
+                    
+                    <label>Contraseña</label><input name="password" type="password">
+                </div>
+
+                <div class="input-field col s6">
+                    
+                    
+                    <label>Confirmar contraseña</label><input name="password_confirmation" type="password" required autocomplete="new-password">
+                </div>
+
+                <br><br>
+                <!--btn Ingresar y Cancelar-->
+                <button href="{{ url('/dashboard') }}" class="nav-menu-link nav-link nav-menu-link_active">CANCELAR</button>
+                <button type="submit" class="nav-menu-link nav-link nav-menu-link_active">GUARDAR</button>
+
+            </form>
+        </main>
+    </div>
+    @endsection
 </x-guest-layout>

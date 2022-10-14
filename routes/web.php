@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,16 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [Controllers\ImagenController::class, 'index'])->name('dashboard');
+
+    Route::get('/publicacion/create', [Controllers\PublicacionController::class, 'create'])->name('publicacion.create');
+    Route::post('/publicacion/store', [Controllers\PublicacionController::class, 'store'])->name('publicacion.store');
+    Route::get('/publicacion/perfilartista', [Controllers\PublicacionController::class, 'show'])->name('publicacion.perfilartista');
+
+    Route::get('/categorias/index', [Controllers\CategoriaController::class, 'index'])->name('categorias.index');
+    Route::get('/categorias/{id_categoria}/mostrar', [Controllers\CategoriaController::class, 'show'])->name('categorias.mostrar');
 });
+
+
+
+// return view('dashboard');
